@@ -1,8 +1,12 @@
 import React from 'react'
+import Header from './components/header'
 
 const App = () => {
   return (
-    <div className="items-center justify-center flex w-screen h-screen">App</div>
+    <div className="flex w-screen h-auto flex-col ">
+      <Header />
+    </div>
+
   )
 }
 
