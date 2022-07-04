@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
-import Header from './components/header'
+import Header from './components/Header'
 import MainContainer from './components/MainContainer'
 import CreateContainer from './components/CreateContainer'
 
