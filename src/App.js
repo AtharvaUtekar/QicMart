@@ -7,7 +7,7 @@ import CreateContainer from './components/CreateContainer'
 
 const App = () => {
   return (
-    <AnimatePresence>
+    <AnimatePresence exitBeforeEnter>
     <div className="flex w-screen h-auto flex-col ">
       <Header />
       <Routes>
