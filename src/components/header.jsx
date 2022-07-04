@@ -5,7 +5,20 @@ import Avatar from "../img/avatar.png"
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { app } from "../firebase.config"
+
 const header = () => {
+
+  const firebaseAuth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+
+  const login = async () => {
+    const response = await signInWithPopup(firebaseAuth, provider);
+    console.log(response);
+  }
+
   return (
     <div className="fixed z-50 w-screen p-6 px-16">
     {/*For desktop devices */}
@@ -32,8 +45,13 @@ const header = () => {
               <p className="text-xs text-white font-semibold" >10</p>
           </div>
         </div>
+
         <div className="flex ml-5 item-center">
-          <motion.img whileTap={{scale:0.7}} src={Avatar} className="w-10 min-w-[40px] min-h-[40px] drop-shadow-xl cursor-pointer" alt="Avatar"/>
+          <motion.img 
+          whileTap={{scale:0.7}} 
+          src={Avatar} className="w-10 min-w-[40px] min-h-[40px] drop-shadow-xl cursor-pointer" alt="Avatar"
+          onClick={login}
+          />
         </div>
       
         
