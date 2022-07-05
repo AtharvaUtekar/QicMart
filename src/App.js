@@ -10,11 +10,14 @@ const App = () => {
     <AnimatePresence exitBeforeEnter>
     <div className="flex w-screen h-auto flex-col ">
       <Header />
-      <Routes>
-        {/*Main component*/}
-        <Route path="/*" element={<MainContainer />} />
-        <Route path="/createItem" element={<CreateContainer />} />
-      </Routes>
+      <main className="w-full md:mt-20 mt-16 px-4 md:px-16 py-4">
+        <Routes>
+          {/*Main component*/}
+          <Route path="/*" element={<MainContainer />} />
+          <Route path="/createItem" element={<CreateContainer />} />
+        </Routes>
+      </main>
+
     </div>
     </AnimatePresence>
 
