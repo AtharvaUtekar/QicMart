@@ -1,6 +1,7 @@
 import React from 'react'
 import delivery from '../img/delivery.png'
 import herobg from '../img/heroBg.png'
+import hero1 from '../img/hero1.jpg'
 
 const HomeContainer = () => {
   return (
@@ -34,12 +35,12 @@ const HomeContainer = () => {
     </div>
 
     
-    <div className="py-2 flex-1 flex items-center">
-        
-        <img src={herobg} className="lg:h-650 lg:w-auto h-250 ml-auto " alt="hero bg img"/>
+    <div className="py-2 flex-1 flex items-center relative">
+      
+         <img src={hero1} className="lg:h-650 lg:w-auto h-250 ml-auto " alt="hero bg img"/>
 
-        <div className="w-full h-full absolute flex items-cente justify-center"></div>
     </div>
+
     </section>
   )
 }
