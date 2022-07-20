@@ -147,10 +147,10 @@ const Header = () => {
             }
  
         <ul className="flex flex-col gap-4 px-4 py-2 ">
-            <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">Home</li>
-            <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">Menu</li>
-            <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">About Us</li>
-            <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">Services </li>
+            <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer onClick={()=> setisMenu(false);}">Home</li>
+            <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer onClick={()=> setisMenu(false);}">Menu</li>
+            <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer onClick={()=> setisMenu(false);}">About Us</li>
+            <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer onClick={()=> setisMenu(false);}">Services </li>
         </ul>
 
             <p className="m-2 p-2 rounded-lg shadow-md text-white bg-red-500 flex items-center gap-4 cursor-pointer hover:bg-slate-200 transition-a11 duration-100 ease-in-out  text-base justify-center px-4 py-3"
