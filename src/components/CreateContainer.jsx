@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {motion} from 'framer-motion'
 import { MdFastfood, MdCloudUpload, MdDelete, MdFoodBank} from 'react-icons/md';
+import { FaRupeeSign } from "react-icons/fa";
 import {categories} from '../utils/data'
 import Loader from '../components/Loader'
 
@@ -20,6 +21,10 @@ const CreateContainer = () => {
   }
 
   const deleteImage = () => {
+
+  }
+  
+  const saveDetails = () => {
 
   }
 
@@ -84,17 +89,35 @@ const CreateContainer = () => {
         <div className="w-full flex flex-col md:flex-row items-center gap-3">
           <div className="w-full py-2 border-b border-gray-500 flex items-center gap-2 "> 
             <MdFoodBank className="text-gray-700 text-2xl" />
-            <input required placeholder="Calories" className="w-full h-full text-lg bg-transparent outine-none text-textColor border-none text-gray-400"></input>
+            <input 
+            required 
+            type="text"
+            value={calories}
+            onchange={(e)=>setCalories(e.target.value)}
+            placeholder="Calories" 
+            className="w-full h-full text-lg bg-transparent outine-none border-none text-textColor placeholder:text-gray-400"></input>
           </div>
         </div>
-
+ 
         <div className="w-full flex flex-col md:flex-row items-center gap-3">
           <div className="w-full py-2 border-b border-gray-500 flex items-center gap-2 "> 
-            <MdFoodBank className="text-gray-700 text-2xl" />
-            <input required placeholder="Price" className="w-full h-full text-lg bg-transparent outine-none text-textColor border-none text-gray-400"></input>
+            <FaRupeeSign className="text-gray-700 text-2xl" />
+            <input 
+            type="text"
+            value={price}
+            onchange={(e)=>setPrice(e.target.value)}
+            required 
+            placeholder="Price" 
+            className="w-full h-full text-lg bg-transparent outine-none border-none text-textColor placeholder:text-gray-400"></input>
           </div>
         </div>
 
+        <div className="flex items-center w-full ">
+          <button type="button" className="ml-0 md:ml-auto w-full border-none outline-none bg-emerald-500 px-12 py-2 rounded-lg text-lg text-white font-semibold"
+          onClick={saveDetails}>
+            Save
+          </button>
+        </div>
 
       </div>
 
