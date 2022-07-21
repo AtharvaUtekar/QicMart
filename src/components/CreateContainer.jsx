@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {motion} from 'framer-motion'
-import { MdFastfood } from 'react-icons/md';
+import { MdFastfood, MdCloudUpload, MdDelete, MdFoodBank} from 'react-icons/md';
 import {categories} from '../utils/data'
 import Loader from '../components/Loader'
 
@@ -12,7 +12,16 @@ const CreateContainer = () => {
   const [fields, setFields] = useState(false);
   const [alertStatus, setAlertStatus] = useState("danger");
   const [msg, setMsg] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [imageAsset, setImageAsset] = useState(null);
+
+  const uploadImage = () => { 
+
+  }
+
+  const deleteImage = () => {
+
+  }
 
   return (
     <div className="w-full h-auto items-center justify-center min-h-screen">
@@ -50,8 +59,42 @@ const CreateContainer = () => {
       </div>
 
       <div className="group justify-center items-center h-225 md:h-420 border-2 border-dotted border-gray-300 w-full cursor-pointer rounded-lg ">
-          {loading ? <Loader /> : <></>}
+          {loading ? <Loader /> : <>
+          {!imageAsset ? 
+            <label className='w-full h-full flex flex-col items-center justify-content cursor-pointer'>
+              <div className='w-full h-full flex flex-col items-center justify-content cursor-pointer p-[2rem] gap-2'>
+                <MdCloudUpload className="text-gray-500 text-3xl hover:text-gray-800 "/>
+                <p className="text-gray-500 text-3xl hover:text-gray-800">Click here to upload</p>
+              </div> 
+              <input type="file" name="iploadimage" accept="image/*" onChange={uploadImage} className="w-0 h-0"></input>
+            </label> : 
+            <div className="relative h-full "> 
+              <img src={imageAsset} alt="uploaded image" className="w-full h-full object-cover" />
+              <button type="button" className="absolute bottom-3 right-3 p-3 rounded-full bg-red-500 cursor-pointer text-xl outine-none"
+                onClick={deleteImage}
+
+              ><MdDelete className="text-white"/>
+              </button>
+            </div>
+
+          }
+          </>}
       </div>
+
+        <div className="w-full flex flex-col md:flex-row items-center gap-3">
+          <div className="w-full py-2 border-b border-gray-500 flex items-center gap-2 "> 
+            <MdFoodBank className="text-gray-700 text-2xl" />
+            <input required placeholder="Calories" className="w-full h-full text-lg bg-transparent outine-none text-textColor border-none text-gray-400"></input>
+          </div>
+        </div>
+
+        <div className="w-full flex flex-col md:flex-row items-center gap-3">
+          <div className="w-full py-2 border-b border-gray-500 flex items-center gap-2 "> 
+            <MdFoodBank className="text-gray-700 text-2xl" />
+            <input required placeholder="Price" className="w-full h-full text-lg bg-transparent outine-none text-textColor border-none text-gray-400"></input>
+          </div>
+        </div>
+
 
       </div>
 
