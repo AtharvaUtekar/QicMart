@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import {motion} from 'framer-motion'
-import { MdFastfood, MdCloudUpload, MdDelete, MdFoodBank, MdAddPhotoAlternate} from 'react-icons/md';
+import { MdFastfood, MdDelete, MdFoodBank, MdAddPhotoAlternate} from 'react-icons/md';
 import { FaRupeeSign } from "react-icons/fa";
 import {categories} from '../utils/data'
 import Loader from '../components/Loader'
 import {storage} from '../firebase.config'
-import { getDownloadURL, uploadBytesResumable, ref } from 'firebase/storage';
+import { getDownloadURL, uploadBytesResumable, ref, deleteObject } from 'firebase/storage';
+import { getAllFoodItems, saveItem } from '../utils/firebaseFunctions';
+import { actionType } from '../context/reducer';
+import { useStateValue } from '../context/StateProvider';
 
 const CreateContainer = () => {
   const [title, setTitle] = useState("");
@@ -17,6 +19,7 @@ const CreateContainer = () => {
   const [msg, setMsg] = useState(null);
   const [loading, setLoading] = useState(false);
   const [imageAsset, setImageAsset] = useState(null);
+  const [{foodItems}, dispatch] = useStateValue();
 
   const uploadImage = (e) => { 
     setLoading(true);
@@ -54,12 +57,85 @@ const CreateContainer = () => {
   }
 
   const deleteImage = () => {
+    setLoading(true);
+    const deleteRef = ref(storage, imageAsset);
+    deleteObject(deleteRef).then(()=>{
+      setImageAsset(null);
+      setLoading(false);
+      setFields(true);
+      setMsg('Image delete successful');
+      setAlertStatus("success");
+      setTimeout(() => {
+          setFields(false);
+      }, 4000);
+
+    });
 
   }
   
   const saveDetails = () => {
+      setLoading(true);
+      try {
+        
+        if(!title || !calories || !imageAsset || !category || !price) {
+          setFields(true);
+          setMsg('Please fill all the fields!');
+          setAlertStatus("danger");
+          setTimeout(() => {
+              setFields(false);
+              setLoading(false);
+          }, 4000);
+       }
+       /* To add data point add here */
+       else{
+          const data ={
+            id: `${Date.now()}`,
+            title: title,
+            imageURL: imageAsset,
+            category: category,
+            price: price,
+            calories: calories,
+            /* Here there is a typo QTY = QQY */
+            qqy: 1 
+          }
+          saveItem(data);
+        }
+        setLoading(false);
+        setFields(true);
+        setMsg('Data uploaded successfully!');
+        clearData();
+        setAlertStatus("success");
+        setTimeout(() => {
+            setFields(false);
+            clearData();
+        }, 3000);
 
+
+
+      } catch (error) {
+          console.log(error);
+
+      }
+      fetchData();
   }
+
+  const clearData = () => {
+    setTitle("");
+    setImageAsset(null);
+    setCalories("");
+    setPrice("");
+    setCategory("Select Category");
+  }
+
+  const fetchData = async () => {
+    await getAllFoodItems().then((data) => {
+      dispatch({
+        type: actionType.SET_FOOD_ITEMS,
+        foodItems : data 
+      });
+    });
+  };
+
 
   return (
     <div className="w-full h-auto items-center justify-center min-h-screen">
@@ -83,7 +159,7 @@ const CreateContainer = () => {
       </div>
       <div className="w-full">
         <select onChange={(e)=>setCategory(e.target.value)} className="w-full outline-none border-b-2 p-2 placeholder: rounded-md curcor-pointer gap-4 text-gray-400 font-semibold">
-          <option value="other" className="bg-white text-gray-400"><p className="text-gray-400">Select category</p></option>
+          <option value="other" className="bg-white text-gray-400">Select category</option>
           {categories && categories.map(item => (
             <option key={item.id} 
             value={item.urlParamName}
@@ -107,7 +183,7 @@ const CreateContainer = () => {
               <input type="file" name="iploadimage" accept="image/*" onChange={uploadImage} className="w-0 h-0"></input>
             </label> : 
             <div className="relative h-full "> 
-              <img src={imageAsset} alt="uploaded image" className="w-full h-full object-cover" />
+              <img src={imageAsset} alt="uploaded image" className="w-full h-full items-center justify-center flex object-cover" />
               <button type="button" className="absolute bottom-3 right-3 p-3 rounded-full bg-red-500 cursor-pointer text-xl outine-none"
                 onClick={deleteImage}
 
@@ -126,7 +202,7 @@ const CreateContainer = () => {
             required 
             type="text"
             value={calories}
-            onchange={(e)=>setCalories(e.target.value)}
+            onChange={(e)=>setCalories(e.target.value)}
             placeholder="Calories" 
             className="w-full h-full text-lg bg-transparent outine-none border-none text-textColor placeholder:text-gray-400"></input>
           </div>
@@ -138,7 +214,7 @@ const CreateContainer = () => {
             <input 
             type="text"
             value={price}
-            onchange={(e)=>setPrice(e.target.value)}
+            onChange={(e)=>setPrice(e.target.value)}
             required 
             placeholder="Price" 
             className="w-full h-full text-lg bg-transparent outine-none border-none text-textColor placeholder:text-gray-400"></input>
