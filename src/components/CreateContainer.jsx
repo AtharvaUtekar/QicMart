@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import {motion} from 'framer-motion'
-import { MdFastfood, MdCloudUpload, MdDelete, MdFoodBank} from 'react-icons/md';
+import { MdFastfood, MdCloudUpload, MdDelete, MdFoodBank, MdAddPhotoAlternate} from 'react-icons/md';
 import { FaRupeeSign } from "react-icons/fa";
 import {categories} from '../utils/data'
 import Loader from '../components/Loader'
+import {storage} from '../firebase.config'
+import { getDownloadURL, uploadBytesResumable, ref } from 'firebase/storage';
 
 const CreateContainer = () => {
   const [title, setTitle] = useState("");
@@ -16,8 +18,39 @@ const CreateContainer = () => {
   const [loading, setLoading] = useState(false);
   const [imageAsset, setImageAsset] = useState(null);
 
-  const uploadImage = () => { 
+  const uploadImage = (e) => { 
+    setLoading(true);
+    const imageFile = e.target.files[0];
+    console.log(imageFile);
+    const storageRef = ref(storage, `Images/${Date.now()}-${imageFile.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, imageFile);
 
+    uploadTask.on('state_changed', 
+    (snapshot) => {
+      const uploadProgress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    }, 
+    (error) => {
+      setFields(true);
+      setMsg('Error while uploading try again');
+      setAlertStatus('danger');
+
+      setTimeout(() => {
+        setFields(false);
+        setLoading(false);
+      }, 4000);
+    }, 
+    ()=>{
+      getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
+        setImageAsset(downloadURL);
+        setLoading(false);
+        setFields(true);
+        setAlertStatus("success");
+        setMsg('Image upload successful');
+        setTimeout(() => {
+          setFields(false);
+        }, 4000);
+      })
+    })
   }
 
   const deleteImage = () => {
@@ -49,8 +82,8 @@ const CreateContainer = () => {
 
       </div>
       <div className="w-full">
-        <select onChange={(e)=>setCategory(e.target.value)} className="w-full outline-none border-b-2 p-2 rounded-md curcor-pointer gap-4">
-          <option value="other" className="bg-white">Select category</option>
+        <select onChange={(e)=>setCategory(e.target.value)} className="w-full outline-none border-b-2 p-2 placeholder: rounded-md curcor-pointer gap-4 text-gray-400 font-semibold">
+          <option value="other" className="bg-white text-gray-400"><p className="text-gray-400">Select category</p></option>
           {categories && categories.map(item => (
             <option key={item.id} 
             value={item.urlParamName}
@@ -67,9 +100,9 @@ const CreateContainer = () => {
           {loading ? <Loader /> : <>
           {!imageAsset ? 
             <label className='w-full h-full flex flex-col items-center justify-content cursor-pointer'>
-              <div className='w-full h-full flex flex-col items-center justify-content cursor-pointer p-[2rem] gap-2'>
-                <MdCloudUpload className="text-gray-500 text-3xl hover:text-gray-800 "/>
-                <p className="text-gray-500 text-3xl hover:text-gray-800">Click here to upload</p>
+              <div className='w-full h-full flex flex-col items-center justify-content cursor-pointer md:p-[5rem] p-[2rem] gap-2'>
+                <MdAddPhotoAlternate className="text-gray-500 text-3xl hover:text-gray-800 "/>
+                <p className="text-gray-500 text-3xl hover:text-gray-800 inline-flex">Click here to upload photo</p>
               </div> 
               <input type="file" name="iploadimage" accept="image/*" onChange={uploadImage} className="w-0 h-0"></input>
             </label> : 
