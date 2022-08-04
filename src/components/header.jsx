@@ -22,7 +22,7 @@ const Header = () => {
 
   const login = async () => {
     if(!user){
-      const {user: {refreshToken, providerData}} = await signInWithPopup(firebaseAuth, provider);
+      const {user: { providerData}} = await signInWithPopup(firebaseAuth, provider);
     dispatch({
       type: actionType.SET_USER,
       user: providerData[0]
@@ -96,7 +96,7 @@ const Header = () => {
                 </Link>
               )
             }
-            <p className="rounded-md p-2 justify-center shadow-lg text-white bg-red-500 flex items-center gap-3 cursor-pointer hover:bg-red-700 transition-a11 duration-100 ease-in-out text-base">Logout <MdLogout/></p>
+            <button onClick={logout} className="rounded-md p-2 justify-center shadow-lg text-white bg-red-500 flex items-center gap-3 cursor-pointer hover:bg-red-700 transition-a11 duration-100 ease-in-out text-base">Logout <MdLogout/></button>
           </motion.div>
           }
 
