@@ -1,6 +1,5 @@
 import React from 'react'
 import delivery from '../img/delivery.png'
-import herobg from '../img/heroBg.png'
 import hero1 from '../img/hero1.jpg'
 
 const HomeContainer = () => {
@@ -38,7 +37,7 @@ const HomeContainer = () => {
     
     <div className="py-2 flex-1 flex items-center relative">
        
-         <img src={hero1} className="lg:h-650 lg:w-auto h-250 ml-auto rounded-xl" alt="hero bg img"/>
+         <img src={hero1} className="lg:h-650 lg:w-auto h-250 ml-auto rounded-xl shadow-xl" alt="hero bg img"/>
         <p></p>
     </div>
 
