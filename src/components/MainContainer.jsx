@@ -2,8 +2,11 @@ import React from 'react'
 import {MdChevronLeft, MdChevronRight} from 'react-icons/md'
 import HomeContainer from './HomeContainer'
 import RowContainer from './RowContainer'
+import {useStateValue} from '../context/StateProvider'
 
 const MainContainer = () => {
+  const [{foodItems} ] = useStateValue();
+
   return (
     <div className="w-full h-auto flex flex-col items-center justify-center mainContainer">
       <HomeContainer />
@@ -21,7 +24,10 @@ const MainContainer = () => {
 
       </div>
 
-      <RowContainer flag={true} />
+      <RowContainer 
+      flag={true} 
+      data={foodItems?.filter((n)=>n.category==='icecreams')} 
+      />
 
       </section>
     </div>
