@@ -1,11 +1,16 @@
-import React from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import {MdChevronLeft, MdChevronRight} from 'react-icons/md'
 import HomeContainer from './HomeContainer'
 import RowContainer from './RowContainer'
 import {useStateValue} from '../context/StateProvider'
 
+
+
 const MainContainer = () => {
-  const [{foodItems} ] = useStateValue();
+  const [{foodItems}] = useStateValue();
+  const [scrollValue, setScrollValue] = useState(0);
+  
+  useEffect(() => {}, [scrollValue]);
 
   return (
     <div className="w-full h-auto flex flex-col items-center justify-center mainContainer">
@@ -18,17 +23,41 @@ const MainContainer = () => {
           <p>From our farms to your table!</p>
           </div>
         <div className="w-full gap-3 items-center hidden md:flex">
-          <div className="w-8 h-8 bg-orange-300 shadow-sm hover:shadow-xl hover:bg-orange-600 transition-all duration-100 ease-in-out flex items-center justify-center rounded-lg"><MdChevronLeft className="text-xl text-white"/></div>
-          <div className="w-8 h-8 bg-orange-300 shadow-sm hover:shadow-xl hover:bg-orange-600 transition-all duration-100 ease-in-out flex items-center justify-center rounded-lg"><MdChevronRight className="text-xl text-white"/></div>
+          <div className="w-8 h-8 bg-orange-300 shadow-sm hover:shadow-xl hover:bg-orange-600 transition-all duration-100 ease-in-out flex items-center justify-center rounded-lg">
+          
+          <button onClick={() => setScrollValue(-700)}>
+          <MdChevronLeft 
+          className="text-xl text-white"          
+          />
+          </button> 
+          </div>
+
+          <div className="w-8 h-8 bg-orange-300 shadow-sm hover:shadow-xl hover:bg-orange-600 transition-all duration-100 ease-in-out flex items-center justify-center rounded-lg">
+          <button onClick={() => setScrollValue(700)}>
+          <MdChevronRight 
+          className="text-xl text-white"          
+          />
+
+          </button>
+          </div>
         </div>
 
       </div>
 
       <RowContainer 
+      scrollValue={scrollValue}
       flag={true} 
-      data={foodItems?.filter((n)=>n.category==='icecreams')} 
+      data={foodItems?.filter((n)=>n.category==='icecreams' || n.category==='drinks' ||  n.category==='fruits')} 
       />
 
+{/*
+      <RowContainer 
+      scrollValue={scrollValue}
+      flag={true} 
+      data={(foodItems).filter((n)=>n.category==='icecreams')} 
+      />
+
+ */}
       </section>
     </div>
   )
