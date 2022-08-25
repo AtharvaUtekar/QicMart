@@ -21,7 +21,7 @@ const RowContainer = ({flag,data,scrollValue}) => {
 
     { data && data.map(item => (
         <motion.div whileHover={{scale:1.05}} 
-        className="w-[300px] min-w-[300px] md:min-w-[340px] my-5 h-auto md:w-[300px] shadow-xl backdrop-blur-xl bg-gray-100 rounded-lg p-4 ">
+        className="w-[300px] min-w-[300px] md:min-w-[340px] my-5 h-auto md:w-[300px] shadow-xl backdrop-blur-xl bg-gradient-to-tr from-white to-gray-100 rounded-lg p-4 ">
 
         <div key={item.id} className="w-full  flex items-center justify-between">
           <motion.img src={item.imageURL} 

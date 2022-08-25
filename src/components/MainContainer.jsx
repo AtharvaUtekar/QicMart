@@ -3,6 +3,7 @@ import {MdChevronLeft, MdChevronRight} from 'react-icons/md'
 import HomeContainer from './HomeContainer'
 import RowContainer from './RowContainer'
 import {useStateValue} from '../context/StateProvider'
+import MenuContainer from './MenuContainer'
 
 
 
@@ -37,7 +38,6 @@ const MainContainer = () => {
           <MdChevronRight 
           className="text-xl text-white"          
           />
-
           </button>
           </div>
         </div>
@@ -47,18 +47,20 @@ const MainContainer = () => {
       <RowContainer 
       scrollValue={scrollValue}
       flag={true} 
-      data={foodItems?.filter((n)=>n.category==='icecreams' || n.category==='drinks' ||  n.category==='fruits')} 
+      data={foodItems?.filter((n)=> n.category==='fruits')} 
       />
 
 {/*
       <RowContainer 
       scrollValue={scrollValue}
       flag={true} 
-      data={(foodItems).filter((n)=>n.category==='icecreams')} 
+      data={(foodItems).filter((n)=>n.category==='icecreams' || n.category==='drinks' || n.category==='icecreams')} 
       />
 
  */}
       </section>
+
+      <MenuContainer />
     </div>
   )
 }
