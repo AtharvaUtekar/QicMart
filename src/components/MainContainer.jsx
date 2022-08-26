@@ -50,14 +50,14 @@ const MainContainer = () => {
       data={foodItems?.filter((n)=> n.category==='fruits')} 
       />
 
-{/*
-      <RowContainer 
+    {/*
+      <RowContainer   
       scrollValue={scrollValue}
       flag={true} 
       data={(foodItems).filter((n)=>n.category==='icecreams' || n.category==='drinks' || n.category==='icecreams')} 
       />
 
- */}
+    */}
       </section>
 
       <MenuContainer />

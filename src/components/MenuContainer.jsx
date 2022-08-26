@@ -35,12 +35,12 @@ const MenuContainer = () => {
                 
                 >
 
-                    <div className={`" w-12 h-12 rounded-full bg-red-600  ${filter === category.urlParamName ? 'bg-white' : 'bg-red-500'} flex items-center justify-center
-                     text-white group-hover:text-black group-hover:bg-white"`}>
+                    <div className={`" w-12 h-12 rounded-full ${filter === category.urlParamName ? 'bg-white text-red-600' : 'bg-red-500 text-white'} flex items-center justify-center
+                      group-hover:text-black group-hover:bg-white font-semibold"`}>
                         <IoFastFoodOutline className="text-xl" />
                         
                     </div>
-                    <p className="text-lg text-black flex flex-col ">
+                    <p className={`"text-lg ${filter === category.urlParamName ? 'text-white' : 'text-black' } font-semibold flex flex-col "`}>
                        {category.name}
                     </p>
 
