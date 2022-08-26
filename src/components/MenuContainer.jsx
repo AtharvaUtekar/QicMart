@@ -27,7 +27,7 @@ const MenuContainer = () => {
             
             {categories && categories.map( category => (
                 <motion.div 
-                whileHover={{scale:1.1}} 
+                whileHover={{scale:1.15}} 
                 key={category.id} 
                 onClick={() => setFilter(category.urlParamName)}
                 className={`"group ${filter === category.urlParamName ? 'bg-red-500' : 'bg-white' } bg-white w-26 px-2 min-w-[96px] h-28 cursor-pointer rounded-lg drop-shadow-lg
@@ -36,8 +36,8 @@ const MenuContainer = () => {
                 >
 
                     <div className={`" w-12 h-12 rounded-full ${filter === category.urlParamName ? 'bg-white text-red-600' : 'bg-red-500 text-white'} flex items-center justify-center
-                      group-hover:text-black group-hover:bg-white font-semibold"`}>
-                        <IoFastFoodOutline className="text-xl" />
+                      group-hover:bg-white font-semibold"`}>
+                        <IoFastFoodOutline className="text-2xl" />
                         
                     </div>
                     <p className={`"text-lg ${filter === category.urlParamName ? 'text-white' : 'text-black' } font-semibold flex flex-col "`}>
@@ -45,7 +45,7 @@ const MenuContainer = () => {
                     </p>
 
                 </motion.div>
-            )) } 
+            ))} 
 
            
             </div>
