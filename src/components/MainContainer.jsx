@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect} from 'react'
+import React, { useState, useEffect} from 'react'
 import {MdChevronLeft, MdChevronRight} from 'react-icons/md'
 import HomeContainer from './HomeContainer'
 import RowContainer from './RowContainer'
@@ -62,8 +62,10 @@ const MainContainer = () => {
       </section>
 
       <MenuContainer />
+       
+      <CartContainer /> 
 
-      {/*<CartContainer />*/}
+      {/**/}
     </div>
   )
 }

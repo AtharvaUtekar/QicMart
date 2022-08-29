@@ -3,6 +3,15 @@ import delivery from '../img/delivery.png'
 import hero1 from '../img/hero1.jpg'
 
 const HomeContainer = () => {
+
+  const handleClick = () => {
+    window.scrollTo({
+      top: 5000,
+      behavior: 'smooth',
+  });
+  };
+
+
   return (
     <section id="home" className="grid grid-cols-1 md:grid-cols-2 gap-2 w-full">
 
@@ -27,7 +36,11 @@ const HomeContainer = () => {
       
       </p>
       
-      <button className="rounded-xl bg-orange-600  text-[1.5rem] text-white w-35 h-15 px-5 py-2 mt-5 md:items-start items-center justify-center shadow-2xl" type="button">Order Now</button>
+      <button 
+      onClick={handleClick}
+      className="rounded-xl bg-orange-600  text-[1.5rem] text-white w-35 h-15 px-5 py-2 mt-5 md:items-start items-center justify-center shadow-2xl" 
+      type="button">
+      Order Now</button>
 
       </div>
 
@@ -35,7 +48,7 @@ const HomeContainer = () => {
     </div>
 
     
-    <div className="py-2 flex-1 flex items-center relative">
+    <div id="second" className="py-2 flex-1 flex items-center relative">
        
          <img src={hero1} className="lg:h-650 lg:w-auto h-250 ml-auto rounded-xl shadow-xl" alt="hero bg img"/>
         <p></p>
