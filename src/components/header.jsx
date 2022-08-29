@@ -16,9 +16,11 @@ const Header = () => {
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
-  const [{user}, dispatch] = useStateValue();
+  const [{user,cartShow}, dispatch] = useStateValue();
 
   const [isMenu, setisMenu] = useState(false);
+  
+
 
   const login = async () => {
     if(!user){
@@ -34,6 +36,7 @@ const Header = () => {
     }
   }
 
+
   const logout = () =>{
     setisMenu(false);
     localStorage.clear();
@@ -42,6 +45,13 @@ const Header = () => {
       user: null,
     });
   };
+
+  const showCart = () =>{
+    dispatch({
+      type: actionType.SET_CART_SHOW,
+      cartShow: !cartShow,
+    });
+  }
 
 
   return (
@@ -67,7 +77,7 @@ const Header = () => {
         </motion.ul>
 
         {/*Cart section */}
-        <div className="relative flex">
+        <div className="relative flex" onClick={showCart}>
           <MdOutlineShoppingCart className="text-2xl ml-8 mr-4 cursor-pointer " />
           <div className="w-5 h-5 drop-shadow-xl absolute -top-3 right-2 rounded-full bg-cartNumBg flex items-center justify-center">
               <p className="text-xs text-white font-semibold" >10</p>
@@ -111,7 +121,7 @@ const Header = () => {
    
 
     <div className="flex items-center justify-between w-full h-full md:hidden">
-      <div className="relative flex">
+      <div className="relative flex" onClick={showCart}>
           <MdOutlineShoppingCart className="text-2xl ml-4 cursor-pointer " />
           <div className="w-5 h-5 drop-shadow-xl absolute -top-3 right-2 rounded-full bg-cartNumBg flex items-center justify-center">
               <p className="text-xs text-white font-semibold" >10</p>

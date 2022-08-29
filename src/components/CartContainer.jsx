@@ -1,15 +1,27 @@
 import React from 'react'
+import { useStateValue } from "../context/StateProvider"
+import { actionType } from '../context/reducer'
 import { motion } from "framer-motion"
 import {IoArrowUndoOutline} from "react-icons/io5"
 import { TbShoppingCartOff } from "react-icons/tb";
 import { MdAddCircleOutline, MdRemoveCircleOutline } from "react-icons/md";
 
 const CartContainer = () => {
+  
+  const [{cartShow}, dispatch] = useStateValue();
+
+  const showCart = () =>{
+    dispatch({
+      type: actionType.SET_CART_SHOW,
+      cartShow: !cartShow,
+    });
+  }
+
   return (
-    <div className="fixed top-0 right-0 w-full md:w-[375px] h-screen bg-white shadow-xl z-[101] flex flex-col">
+    <div className="fixed top-0 right-0 w-full md:w-[375px] h-screen bg-white shadow-xl z-[100] flex flex-col">
         <div className="w-full flex items-center justify-between p-4">
 
-            <motion.div whileHover={{scale:1.12}} whileTap={{scale:0.88}} className="w-12 h-12 cursor-pointer bg-red-600 rounded-full flex items-center justify-center font-semibold">
+            <motion.div onClick={showCart} whileHover={{scale:1.12}} whileTap={{scale:0.88}} className="w-12 h-12 cursor-pointer bg-red-600 rounded-full flex items-center justify-center font-semibold">
                 <IoArrowUndoOutline className="text-2xl text-white"/>
             </motion.div>
 
@@ -50,7 +62,132 @@ const CartContainer = () => {
 
               </div>
 
-            </div>            
+            </div> 
+            <div className="w-full px-2 p-1 rounded-lg bg-cartItem flex items-center gap-2">
+              <img src="https://firebasestorage.googleapis.com/v0/b/qmart-6ecd3.appspot.com/o/Images%2F1659417415725-d4.png?alt=media&token=ab2588c9-fccf-4948-b5b2-0dd834599fb2"
+                className="w-20 h-20 max-w-[60px] rounded-full object-contained" alt="Cart item"/>
+              
+              <div className="flex flex-col px-1 gap-3">
+                <p className="text text-gray-50">Blue lagoon</p>
+                <p className="text text-gray-50"><span>₹</span>550</p>
+
+              </div>
+
+              <div className="group text-white flex items-center gap-2 ml-auto cursor-ponter">
+
+                <motion.div className="text-xl" whileHover={{ scale:1.1}} whileTap={{scale:0.8}}>
+                  <MdAddCircleOutline />
+                </motion.div>
+                <p className="w-5 h-5 rounded-sm text-2xl text-gray-50 flex justify-center items-center">
+                  1
+                </p>
+                <motion.div className="text-xl" whileHover={{ scale:1.1}} whileTap={{scale:0.8}}>
+                  <MdRemoveCircleOutline />
+                </motion.div>
+
+              </div>
+
+            </div>   
+            <div className="w-full px-2 p-1 rounded-lg bg-cartItem flex items-center gap-2">
+              <img src="https://firebasestorage.googleapis.com/v0/b/qmart-6ecd3.appspot.com/o/Images%2F1659417415725-d4.png?alt=media&token=ab2588c9-fccf-4948-b5b2-0dd834599fb2"
+                className="w-20 h-20 max-w-[60px] rounded-full object-contained" alt="Cart item"/>
+              
+              <div className="flex flex-col px-1 gap-3">
+                <p className="text text-gray-50">Blue lagoon</p>
+                <p className="text text-gray-50"><span>₹</span>550</p>
+
+              </div>
+
+              <div className="group text-white flex items-center gap-2 ml-auto cursor-ponter">
+
+                <motion.div className="text-xl" whileHover={{ scale:1.1}} whileTap={{scale:0.8}}>
+                  <MdAddCircleOutline />
+                </motion.div>
+                <p className="w-5 h-5 rounded-sm text-2xl text-gray-50 flex justify-center items-center">
+                  1
+                </p>
+                <motion.div className="text-xl" whileHover={{ scale:1.1}} whileTap={{scale:0.8}}>
+                  <MdRemoveCircleOutline />
+                </motion.div>
+
+              </div>
+
+            </div>   
+            <div className="w-full px-2 p-1 rounded-lg bg-cartItem flex items-center gap-2">
+              <img src="https://firebasestorage.googleapis.com/v0/b/qmart-6ecd3.appspot.com/o/Images%2F1659417415725-d4.png?alt=media&token=ab2588c9-fccf-4948-b5b2-0dd834599fb2"
+                className="w-20 h-20 max-w-[60px] rounded-full object-contained" alt="Cart item"/>
+              
+              <div className="flex flex-col px-1 gap-3">
+                <p className="text text-gray-50">Blue lagoon</p>
+                <p className="text text-gray-50"><span>₹</span>550</p>
+
+              </div>
+
+              <div className="group text-white flex items-center gap-2 ml-auto cursor-ponter">
+
+                <motion.div className="text-xl" whileHover={{ scale:1.1}} whileTap={{scale:0.8}}>
+                  <MdAddCircleOutline />
+                </motion.div>
+                <p className="w-5 h-5 rounded-sm text-2xl text-gray-50 flex justify-center items-center">
+                  1
+                </p>
+                <motion.div className="text-xl" whileHover={{ scale:1.1}} whileTap={{scale:0.8}}>
+                  <MdRemoveCircleOutline />
+                </motion.div>
+
+              </div>
+
+            </div>   
+            <div className="w-full px-2 p-1 rounded-lg bg-cartItem flex items-center gap-2">
+              <img src="https://firebasestorage.googleapis.com/v0/b/qmart-6ecd3.appspot.com/o/Images%2F1659417415725-d4.png?alt=media&token=ab2588c9-fccf-4948-b5b2-0dd834599fb2"
+                className="w-20 h-20 max-w-[60px] rounded-full object-contained" alt="Cart item"/>
+              
+              <div className="flex flex-col px-1 gap-3">
+                <p className="text text-gray-50">Blue lagoon</p>
+                <p className="text text-gray-50"><span>₹</span>550</p>
+
+              </div>
+
+              <div className="group text-white flex items-center gap-2 ml-auto cursor-ponter">
+
+                <motion.div className="text-xl" whileHover={{ scale:1.1}} whileTap={{scale:0.8}}>
+                  <MdAddCircleOutline />
+                </motion.div>
+                <p className="w-5 h-5 rounded-sm text-2xl text-gray-50 flex justify-center items-center">
+                  1
+                </p>
+                <motion.div className="text-xl" whileHover={{ scale:1.1}} whileTap={{scale:0.8}}>
+                  <MdRemoveCircleOutline />
+                </motion.div>
+
+              </div>
+
+            </div>   
+            <div className="w-full px-2 p-1 rounded-lg bg-cartItem flex items-center gap-2">
+              <img src="https://firebasestorage.googleapis.com/v0/b/qmart-6ecd3.appspot.com/o/Images%2F1659417415725-d4.png?alt=media&token=ab2588c9-fccf-4948-b5b2-0dd834599fb2"
+                className="w-20 h-20 max-w-[60px] rounded-full object-contained" alt="Cart item"/>
+              
+              <div className="flex flex-col px-1 gap-3">
+                <p className="text text-gray-50">Blue lagoon</p>
+                <p className="text text-gray-50"><span>₹</span>550</p>
+
+              </div>
+
+              <div className="group text-white flex items-center gap-2 ml-auto cursor-ponter">
+
+                <motion.div className="text-xl" whileHover={{ scale:1.1}} whileTap={{scale:0.8}}>
+                  <MdAddCircleOutline />
+                </motion.div>
+                <p className="w-5 h-5 rounded-sm text-2xl text-gray-50 flex justify-center items-center">
+                  1
+                </p>
+                <motion.div className="text-xl" whileHover={{ scale:1.1}} whileTap={{scale:0.8}}>
+                  <MdRemoveCircleOutline />
+                </motion.div>
+
+              </div>
+
+            </div>              
 
           </div>
 
