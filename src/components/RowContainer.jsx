@@ -1,16 +1,36 @@
-import React, {useRef, useEffect} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import {MdOutlineAddShoppingCart} from "react-icons/md"
 import { motion } from "framer-motion"
 import { FaHotjar } from "react-icons/fa";
+import { useStateValue } from '../context/StateProvider';
+import { actionType } from '../context/reducer'
+
 
 const RowContainer = ({flag,data,scrollValue}) => {
 
   const rowContainer = useRef();
 
+  const [items, setItems] = useState([])
+
+  const [{cartItems}, dispatch] = useStateValue();
+
+  const addToCart = () => {
+    
+    dispatch({
+      type: actionType.SET_CARTITEMS,
+      cartItems: items
+    })
+    localStorage.setItem('cartItems', JSON.stringify(items))
+  }
+
   useEffect(()=>{
     rowContainer.current.scrollLeft += scrollValue;
   },
   [scrollValue])
+
+  useEffect(() => {
+    addToCart()
+  }, [items])
 
   return (
     <div 
@@ -33,8 +53,9 @@ const RowContainer = ({flag,data,scrollValue}) => {
 
 
           <motion.div 
+          onClick={()=> setItems([...cartItems, item])}
           whileTap={{ scale:"0.8" }}
-          whileHover={{scale:1.15}}
+          whileHover={{scale:1.1}}
           className="w-9 h-9 rounded-full relative flex bg-red-600 items-center justify-center hover:shadow-lg">
 
             <MdOutlineAddShoppingCart className="flex text-white items-center justify-center" />
@@ -51,8 +72,7 @@ const RowContainer = ({flag,data,scrollValue}) => {
           </div>
           <div className="flex gap-2 items-center text-md">
           <FaHotjar />
-          <p className="mt-[5px] text-textColor md:text-md">
-          
+          <p className="mt-[5px] text-textColor md:text-md">          
           {item.calories} Calories 
           </p> 
           </div>
