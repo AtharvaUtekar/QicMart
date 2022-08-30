@@ -6,7 +6,7 @@ import App from './App'
 import { StateProvider } from './context/StateProvider';
 import reducer from './context/reducer';
 import { initialState } from './context/initialState';
-/* 5:08:10 */
+/* 7:20 */
 
 reactDOM.render(
     <Router>
