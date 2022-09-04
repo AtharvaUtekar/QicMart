@@ -56,7 +56,7 @@ const RowContainer = ({flag,data,scrollValue}) => {
           onClick={()=> setItems([...cartItems, item])}
           whileTap={{ scale:"0.8" }}
           whileHover={{scale:1.1}}
-          className="w-9 h-9 rounded-full relative flex bg-red-600 items-center justify-center hover:shadow-lg">
+          className="w-9 h-9 cursor-pointer rounded-full relative flex bg-red-600 items-center justify-center hover:shadow-lg">
 
             <MdOutlineAddShoppingCart className="flex text-white items-center justify-center" />
 
