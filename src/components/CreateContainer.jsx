@@ -96,7 +96,7 @@ const CreateContainer = () => {
             price: price,
             calories: calories,
             /* Here there is a typo QTY = QQY */
-            qqy: 1 
+            qty: 1 
           }
           saveItem(data);
         }

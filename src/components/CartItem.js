@@ -8,7 +8,7 @@ const CartItem = ({item,flag,setFlag}) => {
     
   const [{ cartItems }, dispatch] = useStateValue(); 
   const [items,setItems] = useState([])
-  const [qty, setQty] = useState(item.qyy)
+  const [qty, setQty] = useState(item.qty)
 
   const cartDispatch = () => {
     localStorage.setItem("cartItems", JSON.stringify(items));
@@ -23,7 +23,7 @@ const CartItem = ({item,flag,setFlag}) => {
       setQty(qty+1)
       cartItems.map(item => {
         if(item.id===id) {
-          item.qyy +=1
+          item.qty +=1
           setFlag(flag+1)
         }
       })
@@ -39,7 +39,7 @@ const CartItem = ({item,flag,setFlag}) => {
         setQty(qty-1)
         cartItems.map(item => {
           if(item.id===id) {
-            item.qyy -=1
+            item.qty -=1
             setFlag(flag+1)
           }
         })

@@ -30,7 +30,7 @@ const CartContainer = () => {
 
   useEffect(() => {
     let totalPrice =cartItems.reduce(function (accumalator, item){
-      return accumalator + item.qyy * item.price;
+      return accumalator + item.qty * item.price;
     }, 0);
     setTot(totalPrice)
   },[tot,flag])
