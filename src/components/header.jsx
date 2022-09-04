@@ -19,6 +19,13 @@ const Header = () => {
   const [{user,cartShow,cartItems}, dispatch] = useStateValue();
 
   const [isMenu, setisMenu] = useState(false);
+
+  const handleClick = () => {
+    window.scrollTo({
+      top: 5000,
+      behavior: 'smooth',
+  });
+  };
   
 
 
@@ -71,7 +78,7 @@ const Header = () => {
         exit={{ opacity:0, x:200 }}
         className="flex item-center gap-8 ml-auto">
             <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">Home</li>
-            <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">Menu</li>
+            <li onClick={handleClick} className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">Menu</li>
             <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">About Us</li>
             <li className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">Services </li>
         </motion.ul>
