@@ -68,13 +68,13 @@ const CartItem = ({item,flag,setFlag}) => {
 
   <div className="group text-white flex items-center gap-2 ml-auto cursor-ponter">
 
-    <motion.div className="text-xl" whileHover={{ scale:1.1}} whileTap={{scale:0.8}} onClick={() => updateQty("add",item?.id)}>
+    <motion.div className="text-xl cursor-pointer" whileHover={{ scale:1.1}} whileTap={{scale:0.8}} onClick={() => updateQty("add",item?.id)}>
       <MdAddCircleOutline />
     </motion.div>
     <p className="w-5 h-5 rounded-sm text-2xl text-gray-50 flex justify-center items-center">
       {qty}
     </p>
-    <motion.div className="text-xl" whileHover={{ scale:1.1}} whileTap={{scale:0.8}} onClick={() => updateQty("remove",item?.id)}>
+    <motion.div className="text-xl cursor-pointer" whileHover={{ scale:1.1}} whileTap={{scale:0.8}} onClick={() => updateQty("remove",item?.id)}>
       <MdRemoveCircleOutline />
     </motion.div>
 

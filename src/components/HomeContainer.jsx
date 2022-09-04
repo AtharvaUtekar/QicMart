@@ -20,7 +20,7 @@ const HomeContainer = () => {
         
       <div className="flex bg-orange-100 px-4 py-2 rounded-full ">
 
-        <p className="text-base text-orange-500 font-semibold">Bike delivery</p>
+        <p className="text-base text-orange-500 font-semibold">Quick delivery</p>
         <div className="w-6 h-6 rounded-full overflow-hidden">
         <img src={delivery} alt="delivery" className="w-full h-full object-contain"/>
         </div>
