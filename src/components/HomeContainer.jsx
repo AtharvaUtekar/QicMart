@@ -6,7 +6,7 @@ const HomeContainer = () => {
 
   const handleClick = () => {
     window.scrollTo({
-      top: 5000,
+      top: 1400,
       behavior: 'smooth',
   });
   };
@@ -28,6 +28,9 @@ const HomeContainer = () => {
 
       <div className="pt-3">
       <p className="text-[2.25rem] font-bold tracking-wide text-headingColor">
+      Hungry? 
+      </p>
+      <p className="text-[2.0rem] font-bold tracking-wide text-headingColor">
       Get your order delivered in just {" "}<span className="text-orange-400 text-[2.25rem]">19 Minutes!</span> 
       </p>
       <p className="text-[2.3rem] font-bold tracking-wide text-headingColor">
@@ -42,7 +45,10 @@ const HomeContainer = () => {
       type="button">
       Order Now</button>
 
+
       </div>
+
+      
 
 
     </div>
@@ -51,7 +57,7 @@ const HomeContainer = () => {
     <div id="second" className="py-2 flex-1 flex items-center relative">
        
          <img src={hero1} className="lg:h-650 lg:w-auto h-250 ml-auto rounded-xl shadow-xl" alt="hero bg img"/>
-        <p></p>
+        
     </div>
 
     </section>

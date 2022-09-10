@@ -4,6 +4,7 @@ import {categories} from '../utils/data'
 import { motion } from "framer-motion"
 import  RowContainer from "./RowContainer"
 import {useStateValue} from '../context/StateProvider'
+import OffersContainer from './OffersContainer';
 
 const MenuContainer = () => {
   
@@ -15,6 +16,9 @@ const MenuContainer = () => {
 
     return (
         <section className="w-full p-4 my-8" id="menu">
+
+        <OffersContainer />
+
         <div className="w-full flex flex-col items-center justify-center">
 
             <div className="w-full text-xl font-semibold relative capitalize before:absolute before:rounded-lg before:content before:w-20

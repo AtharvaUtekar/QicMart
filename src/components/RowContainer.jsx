@@ -35,7 +35,7 @@ const RowContainer = ({flag,data,scrollValue}) => {
   return (
     <div 
       ref={rowContainer}
-      className={`w-full my-12 flex items-center gap-6 bg-orange-50 p-5 scroll-smooth rounded-xl backdrop-blur-sm
+      className={`w-full my-4 flex items-center gap-6 bg-orange-50 p-5 scroll-smooth rounded-xl backdrop-blur-sm
       ${flag ? 'overflow-x-scroll scrollbar-none' : 'overflow-x-hidden flex-wrap'}`}
     >
 
