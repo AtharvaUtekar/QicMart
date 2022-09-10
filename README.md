@@ -4,7 +4,7 @@
 ### https://qicmart.netlify.app
 
 
-#### This is a food delivery app with modern UI/UX aspects, backed by firebase with google auth and cart functionality.
+#### This is a food delivery app with modern UI/UX aspects, backed by firebase realtime database with google auth and cart functionality.
 
 #### *The food delivery website, firebase, dynamic crud, .*
 
