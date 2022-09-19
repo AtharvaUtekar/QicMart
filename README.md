@@ -4,14 +4,13 @@
 ### https://qicmart.netlify.app
 
 
-#### This is a food delivery app with modern UI/UX aspects, backed by firestore database with google authentication and cart functionality. It is mobile responsive. It dynamically fetches data from the firestore database and firebase storage. It renders the data with proper state mangement. The admin can create products easily via a create form and effectively manage them in database.
+#### _This is a food delivery app with modern UI/UX aspects, backed by firestore database with google authentication and cart functionality. It is mobile responsive. It dynamically fetches data from the firestore database and firebase storage. It renders the data with proper state mangement. The admin can create products easily via a create form and effectively manage them in database._
 
 
 ### Technologies used: 
 - **ReactJS** 
 - **Tailwind CSS**
-- **Firestore database**
-- **Firebase storage**
+- **Firestore database and Firebase storage**
 - **Google Authentication**
 - **Redux and react state management**
 
